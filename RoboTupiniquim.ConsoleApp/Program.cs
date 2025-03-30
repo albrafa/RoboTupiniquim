@@ -42,15 +42,40 @@ namespace RoboTupiniquim.ConsoleApp
             Console.WriteLine("M: você moverá o robô para onde ele estiver apontando naquele momento.");
             Console.WriteLine();
 
-            // input: posição inicial / GRID / comandos
+            // input: GRID
 
-            Console.WriteLine("Por favor, informe o tamanho do grid: ");
-            string[] gridArea = Console.ReadLine();
+            Console.WriteLine("Por favor, informe o tamanho do grid (coordenada X): ");
+            int gridX = Convert.ToInt32(Console.ReadLine());
 
+            Console.WriteLine("Por favor, informe o tamanho do grid (coordenada Y): ");
+            int gridY = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
 
-            int gridX = 0;
-            int gridY = 0;
-            int startingPoint = 0;
+            // input: posição inicial
+            Console.WriteLine("Por favor, informe a coordenada inicial 'X' do robô.");
+            int xStartingPoint = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+
+            Console.WriteLine("Por favor, informe a coordenada inicial 'Y' do robô.");
+            int yStartingPoint = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+
+            int[] initialPosition = {xStartingPoint, yStartingPoint};
+
+            Console.WriteLine($"As coordenadas iniciais do robô são: {initialPosition}. Informe o próximo comando...");
+            Console.ReadLine();
+
+            for (int x = 0; x < gridX; x++)
+            {
+
+            }
+
+            for (int y = 0; y < gridY; y++)
+            {
+
+            }
+
+            // comandos
 
             string facingDirection = "N";
             string commands = "EMEMEMEMM";
@@ -59,6 +84,13 @@ namespace RoboTupiniquim.ConsoleApp
             Console.WriteLine();
             Console.WriteLine("O robô está agora apontando para o NORTE. Informe o próximo comando...");
             Console.ReadLine();
+
+            if (commands != "D" || commands != "E" || commands != "M")
+                {
+                Console.WriteLine("Por favor, digite apenas 'D', 'E', ou 'M'.");
+
+                return;
+                }
 
 
             for (int i = 0; i < commands.Length; i++)
@@ -114,12 +146,7 @@ namespace RoboTupiniquim.ConsoleApp
                     }
                 }
 
-            }
-
-
-            // plano cartesiano + movimentação
-
-
+            }            
 
             Console.ReadLine();
         }
