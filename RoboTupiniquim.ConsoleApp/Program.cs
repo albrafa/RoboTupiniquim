@@ -44,11 +44,21 @@ namespace RoboTupiniquim.ConsoleApp
 
             // input: posição inicial / GRID / comandos
 
-            int positionX = 1;
-            int positionY = 2;
-            string facingDirection = "N";
+            Console.WriteLine("Por favor, informe o tamanho do grid: ");
+            string[] gridArea = Console.ReadLine();
 
+
+            int gridX = 0;
+            int gridY = 0;
+            int startingPoint = 0;
+
+            string facingDirection = "N";
             string commands = "EMEMEMEMM";
+
+
+            Console.WriteLine();
+            Console.WriteLine("O robô está agora apontando para o NORTE. Informe o próximo comando...");
+            Console.ReadLine();
 
 
             for (int i = 0; i < commands.Length; i++)
@@ -57,15 +67,23 @@ namespace RoboTupiniquim.ConsoleApp
                 if (commands[i] == 'E')
                 {
                     facingDirection = "O";
+                    Console.WriteLine("O robô está agora apontando para o OESTE. Informe o próximo comando...");
+                    Console.ReadLine();
                     if (commands[i] == 'E' && facingDirection == "O")
                     {
                         facingDirection = "S";
+                        Console.WriteLine("O robô está agora apontando para o SUL. Informe o próximo comando...");
+                        Console.ReadLine();
                         if (commands[i] == 'E' && facingDirection == "S")
                         {
                             facingDirection = "L";
+                            Console.WriteLine("O robô está agora apontando para o LESTE. Informe o próximo comando...");
+                            Console.ReadLine();
                             if (commands[i] == 'E' && facingDirection == "L")
                             {
                                 facingDirection = "N";
+                                Console.WriteLine("O robô está agora apontando para o NORTE. Informe o próximo comando...");
+                                Console.ReadLine();
                             }
                         }
                     }
@@ -74,15 +92,23 @@ namespace RoboTupiniquim.ConsoleApp
                 else if (commands[i] == 'D')
                 {
                     facingDirection = "L";
+                    Console.WriteLine("O robô está agora apontando para o LESTE. Informe o próximo comando...");
+                    Console.ReadLine();
                     if (commands[i] == 'D' && facingDirection == "L")
                     {
                         facingDirection = "S";
+                        Console.WriteLine("O robô está agora apontando para o SUL. Informe o próximo comando...");
+                        Console.ReadLine();
                         if (commands[i] == 'D' && facingDirection == "S")
                         {
                             facingDirection = "O";
+                            Console.WriteLine("O robô está agora apontando para o OESTE. Informe o próximo comando...");
+                            Console.ReadLine();
                             if (commands[i] == 'D' && facingDirection == "O")
                             {
                                 facingDirection = "N";
+                                Console.WriteLine("O robô está agora apontando para o NORTE. Informe o próximo comando...");
+                                Console.ReadLine();
                             }
                         }
                     }
