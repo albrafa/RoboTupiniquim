@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.Design;
 using System.IO.Compression;
 using System.Runtime.Intrinsics.X86;
 
@@ -25,7 +26,7 @@ namespace RoboTupiniquim.ConsoleApp
 
         static void Main(string[] args)
 
-            // menu inicial
+        // menu inicial
         {
             Console.WriteLine("--------------------------------------");
             Console.WriteLine("           Robô Tupiniquim");
@@ -44,7 +45,7 @@ namespace RoboTupiniquim.ConsoleApp
 
             // input: GRID
 
-            Console.WriteLine("Por favor, informe o tamanho do grid (coordenada X): ");
+            Console.WriteLine("Por favor, informe o tamanho do grid (coordenadas X): ");
             int gridX = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Por favor, informe o tamanho do grid (coordenada Y): ");
@@ -60,95 +61,115 @@ namespace RoboTupiniquim.ConsoleApp
             int yStartingPoint = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine();
 
-            int[] initialPosition = {xStartingPoint, yStartingPoint};
+            char facingDirection;
+            Console.WriteLine("Por favor, informe a direção inicial do robô.");
+            facingDirection = char.Parse(Console.ReadLine());
 
-            Console.WriteLine($"As coordenadas iniciais do robô são: {initialPosition}. Informe o próximo comando...");
-            Console.ReadLine();
+            int[] initialPosition = { xStartingPoint, yStartingPoint };
 
-            for (int x = 0; x < gridX; x++)
-            {
+            int x = initialPosition[0];
+            int y = initialPosition[1];
 
-            }
+            //Console.WriteLine($"As coordenadas iniciais do robô são: {initialPosition}. Informe o próximo comando...");
+            //Console.ReadLine();
 
-            for (int y = 0; y < gridY; y++)
-            {
+            //for (int x = 0; x < gridX; x++)
+            //{
+            //    Console.Write($"O robô se encontra na coordenada X{x},");
+            //}
 
-            }
+            //for (int y = 0; y < gridY; y++)
+            //{
+            //    Console.Write($"e na coordenada Y{y}. Informe o próximo comando...");
+            //}
 
             // comandos
-
-            string facingDirection = "N";
-            string commands = "EMEMEMEMM";
-
-
-            Console.WriteLine();
-            Console.WriteLine("O robô está agora apontando para o NORTE. Informe o próximo comando...");
-            Console.ReadLine();
-
-            if (commands != "D" || commands != "E" || commands != "M")
-                {
-                Console.WriteLine("Por favor, digite apenas 'D', 'E', ou 'M'.");
-
-                return;
-                }
+                       
+            Console.WriteLine("Informe o próximo comando...");
+            string commands = Console.ReadLine();
 
 
             for (int i = 0; i < commands.Length; i++)
-                        
+
             {
-                if (commands[i] == 'E')
+
+                switch (commands[i])
                 {
-                    facingDirection = "O";
-                    Console.WriteLine("O robô está agora apontando para o OESTE. Informe o próximo comando...");
-                    Console.ReadLine();
-                    if (commands[i] == 'E' && facingDirection == "O")
-                    {
-                        facingDirection = "S";
-                        Console.WriteLine("O robô está agora apontando para o SUL. Informe o próximo comando...");
-                        Console.ReadLine();
-                        if (commands[i] == 'E' && facingDirection == "S")
+                    case 'E':
+                        if (facingDirection == 'N')
                         {
-                            facingDirection = "L";
-                            Console.WriteLine("O robô está agora apontando para o LESTE. Informe o próximo comando...");
-                            Console.ReadLine();
-                            if (commands[i] == 'E' && facingDirection == "L")
-                            {
-                                facingDirection = "N";
-                                Console.WriteLine("O robô está agora apontando para o NORTE. Informe o próximo comando...");
-                                Console.ReadLine();
-                            }
+                            facingDirection = 'O';
                         }
-                    }
-
-                }
-                else if (commands[i] == 'D')
-                {
-                    facingDirection = "L";
-                    Console.WriteLine("O robô está agora apontando para o LESTE. Informe o próximo comando...");
-                    Console.ReadLine();
-                    if (commands[i] == 'D' && facingDirection == "L")
-                    {
-                        facingDirection = "S";
-                        Console.WriteLine("O robô está agora apontando para o SUL. Informe o próximo comando...");
-                        Console.ReadLine();
-                        if (commands[i] == 'D' && facingDirection == "S")
+                        else if (facingDirection == 'O')
                         {
-                            facingDirection = "O";
-                            Console.WriteLine("O robô está agora apontando para o OESTE. Informe o próximo comando...");
-                            Console.ReadLine();
-                            if (commands[i] == 'D' && facingDirection == "O")
-                            {
-                                facingDirection = "N";
-                                Console.WriteLine("O robô está agora apontando para o NORTE. Informe o próximo comando...");
-                                Console.ReadLine();
-                            }
+                            facingDirection = 'S';
                         }
-                    }
+                        else if (facingDirection == 'S')
+                        {
+                            facingDirection = 'L';
+                        }
+                        else if (facingDirection == 'L')
+                        {
+                            facingDirection = 'N';
+                        }
+                        break;
+
+                    case 'D':
+                        {
+                            if (facingDirection == 'N')
+                            {
+                                facingDirection = 'L';
+                            }
+                            else if (facingDirection == 'L')
+                            {
+                                facingDirection = 'S';
+                            }
+                            else if (facingDirection == 'S')
+                            {
+                                facingDirection = 'O';
+                            }
+                            else if (facingDirection == 'O')
+                            {
+                                facingDirection = 'N';
+                            }
+                            break;
+
+                        }
+                    case 'M':
+                        {
+                            if (facingDirection == 'N')
+                            {
+                                y++;
+                            }
+
+                            else if (facingDirection == 'S')
+                            {
+                                y--;
+                            }
+                            else if (facingDirection == 'L')
+                            {
+                                x++;
+                            }
+                            else if (facingDirection == 'O')
+                            {
+                                x--;
+                            }
+                                break;
+                        }
                 }
 
-            }            
 
+            }
+            Console.WriteLine($"O robô parou nas coordenadas X{x} e Y{y} e apontando para {facingDirection}.");
             Console.ReadLine();
         }
+
     }
+
 }
+                
+
+   
+     
+    
+
