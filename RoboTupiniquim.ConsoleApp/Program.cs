@@ -53,115 +53,121 @@ namespace RoboTupiniquim.ConsoleApp
             Console.WriteLine();
 
             // input: posição inicial
-            Console.WriteLine("Por favor, informe a coordenada inicial 'X' do robô.");
-            int xStartingPoint = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine();
 
-            Console.WriteLine("Por favor, informe a coordenada inicial 'Y' do robô.");
-            int yStartingPoint = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine();
-
-            char facingDirection;
-            Console.WriteLine("Por favor, informe a direção inicial do robô.");
-            facingDirection = char.Parse(Console.ReadLine());
-
-            int[] initialPosition = { xStartingPoint, yStartingPoint };
-
-            int x = initialPosition[0];
-            int y = initialPosition[1];
-
-            //Console.WriteLine($"As coordenadas iniciais do robô são: {initialPosition}. Informe o próximo comando...");
-            //Console.ReadLine();
-
-            //for (int x = 0; x < gridX; x++)
-            //{
-            //    Console.Write($"O robô se encontra na coordenada X{x},");
-            //}
-
-            //for (int y = 0; y < gridY; y++)
-            //{
-            //    Console.Write($"e na coordenada Y{y}. Informe o próximo comando...");
-            //}
-
-            // comandos
-                       
-            Console.WriteLine("Informe o próximo comando...");
-            string commands = Console.ReadLine();
-
-
-            for (int i = 0; i < commands.Length; i++)
-
+            for (int i = 0; i < 2; i++)
             {
+                Console.WriteLine("Por favor, informe a coordenada inicial 'X' do robô.");
+                int xStartingPoint = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
 
-                switch (commands[i])
+                Console.WriteLine("Por favor, informe a coordenada inicial 'Y' do robô.");
+                int yStartingPoint = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+
+                char facingDirection;
+                Console.WriteLine("Por favor, informe a direção inicial do robô.");
+                facingDirection = char.Parse(Console.ReadLine());
+
+                int[] initialPosition = { xStartingPoint, yStartingPoint };
+
+                int x = initialPosition[0];
+                int y = initialPosition[1];
+
+                //Console.WriteLine($"As coordenadas iniciais do robô são: {initialPosition}. Informe o próximo comando...");
+                //Console.ReadLine();
+
+                //for (int x = 0; x < gridX; x++)
+                //{
+                //    Console.Write($"O robô se encontra na coordenada X{x},");
+                //}
+
+                //for (int y = 0; y < gridY; y++)
+                //{
+                //    Console.Write($"e na coordenada Y{y}. Informe o próximo comando...");
+                //}
+
+                // comandos
+
+                Console.WriteLine("Informe o próximo comando...");
+                string commands = Console.ReadLine();
+
+
+                for (int j = 0; j < commands.Length; j++)
+
                 {
-                    case 'E':
-                        if (facingDirection == 'N')
-                        {
-                            facingDirection = 'O';
-                        }
-                        else if (facingDirection == 'O')
-                        {
-                            facingDirection = 'S';
-                        }
-                        else if (facingDirection == 'S')
-                        {
-                            facingDirection = 'L';
-                        }
-                        else if (facingDirection == 'L')
-                        {
-                            facingDirection = 'N';
-                        }
-                        break;
 
-                    case 'D':
-                        {
+                    switch (commands[j])
+                    {
+                        case 'E':
                             if (facingDirection == 'N')
-                            {
-                                facingDirection = 'L';
-                            }
-                            else if (facingDirection == 'L')
-                            {
-                                facingDirection = 'S';
-                            }
-                            else if (facingDirection == 'S')
                             {
                                 facingDirection = 'O';
                             }
                             else if (facingDirection == 'O')
                             {
+                                facingDirection = 'S';
+                            }
+                            else if (facingDirection == 'S')
+                            {
+                                facingDirection = 'L';
+                            }
+                            else if (facingDirection == 'L')
+                            {
                                 facingDirection = 'N';
                             }
                             break;
 
-                        }
-                    case 'M':
-                        {
-                            if (facingDirection == 'N')
+                        case 'D':
                             {
-                                y++;
-                            }
-
-                            else if (facingDirection == 'S')
-                            {
-                                y--;
-                            }
-                            else if (facingDirection == 'L')
-                            {
-                                x++;
-                            }
-                            else if (facingDirection == 'O')
-                            {
-                                x--;
-                            }
+                                if (facingDirection == 'N')
+                                {
+                                    facingDirection = 'L';
+                                }
+                                else if (facingDirection == 'L')
+                                {
+                                    facingDirection = 'S';
+                                }
+                                else if (facingDirection == 'S')
+                                {
+                                    facingDirection = 'O';
+                                }
+                                else if (facingDirection == 'O')
+                                {
+                                    facingDirection = 'N';
+                                }
                                 break;
-                        }
+
+                            }
+                        case 'M':
+                            {
+                                if (facingDirection == 'N')
+                                {
+                                    y++;
+                                }
+
+                                else if (facingDirection == 'S')
+                                {
+                                    y--;
+                                }
+                                else if (facingDirection == 'L')
+                                {
+                                    x++;
+                                }
+                                else if (facingDirection == 'O')
+                                {
+                                    x--;
+                                }
+                                break;
+                            }
+                    }
+
+
                 }
-
-
+                Console.WriteLine($"O robô parou nas coordenadas X{x} e Y{y} e apontando para {facingDirection}.");
+                Console.ReadLine();
             }
-            Console.WriteLine($"O robô parou nas coordenadas X{x} e Y{y} e apontando para {facingDirection}.");
-            Console.ReadLine();
+            
+            
         }
 
     }
